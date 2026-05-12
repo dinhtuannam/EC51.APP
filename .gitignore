@@ -1,0 +1,62 @@
+# Xcode
+DerivedData/
+.build/
+
+# Swift Package Manager
+Packages/
+Package.resolved
+
+# User settings
+xcuserdata/
+*.xcuserstate
+
+# Xcode workspace user data
+*.xcworkspace/xcuserdata/
+
+# MacOS
+.DS_Store
+
+# Logs
+*.log
+
+# Temporary files
+*.swp
+*.tmp
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/
+fastlane/test_output/
+
+# CocoaPods
+Pods/
+
+# Carthage
+Carthage/Build/
+
+# Archives
+*.xcarchive
+
+# Certificates / Provisioning
+*.p12
+*.mobileprovision
+
+# Firebase / Google config (optional)
+GoogleService-Info.plist
+
+# Realm
+*.realm
+*.realm.lock
+*.realm.note
+*.realm.management/
+
+# Crashlytics
+crashlytics-build.properties
+
+# Environment files
+.env
+.env.local
+
+# App build outputs
+*.ipa
