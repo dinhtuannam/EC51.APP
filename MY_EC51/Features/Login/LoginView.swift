@@ -19,12 +19,11 @@ struct LoginView: View {
             TextField("Username", text: $viewModel.username)
             TextField("Password", text: $viewModel.password)
 
-            AlxButton("SIGN IN",variant: .primary ) {
+            AlxButton("SIGN IN", variant: .primary) {
                 viewModel.handleSignIn()
             }
-        }.padding(.horizontal)
-            .background(Color.blue)
-            .ignoresSafeArea()
+        }
+        .padding(.horizontal)
     }
 }
 
