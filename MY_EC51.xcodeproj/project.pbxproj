@@ -32,6 +32,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22B27BC12FB4256900E2CD4F /* App */ = {
+			isa = PBXGroup;
+			children = (
+				22D231342FB32FF700D8D9F0 /* ContentView.swift */,
+				22D231322FB32FF700D8D9F0 /* MY_EC51App.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		22D231262FB32FF700D8D9F0 = {
 			isa = PBXGroup;
 			children = (
@@ -51,8 +60,7 @@
 		22D231312FB32FF700D8D9F0 /* MY_EC51 */ = {
 			isa = PBXGroup;
 			children = (
-				22D231322FB32FF700D8D9F0 /* MY_EC51App.swift */,
-				22D231342FB32FF700D8D9F0 /* ContentView.swift */,
+				22B27BC12FB4256900E2CD4F /* App */,
 				22D231362FB32FFA00D8D9F0 /* Assets.xcassets */,
 				22D231382FB32FFA00D8D9F0 /* Preview Content */,
 			);
