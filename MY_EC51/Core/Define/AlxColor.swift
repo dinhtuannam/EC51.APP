@@ -5,11 +5,9 @@
 //  Created by MacOS on 13/05/2026.
 //
 
-import Foundation
 import SwiftUI
 
-extension Color {
-
+enum AlxColor {
     static let primary = Color(
         red: 13.0 / 255.0,
         green: 110.0 / 255.0,

@@ -1,5 +1,5 @@
 //
-//  AlxButtonVariant.swift
+//  AlxVariant.swift
 //  MY_EC51
 //
 //  Created by MacOS on 13/05/2026.
@@ -23,27 +23,27 @@ enum AlxVariant {
         switch self {
         case .primary:
             return Colors(
-                background: .primary,
+                background: AlxColor.primary,
                 foreground: .white,
-                border: .primary
+                border: AlxColor.primary
             )
         case .warning:
             return Colors(
-                background: .warning,
+                background: AlxColor.warning,
                 foreground: .black,
-                border: .warning
+                border: AlxColor.warning
             )
         case .error:
             return Colors(
-                background: .error,
+                background: AlxColor.error,
                 foreground: .white,
-                border: .error
+                border: AlxColor.error
             )
         case .outline:
             return Colors(
                 background: .clear,
-                foreground: .primary,
-                border: .primary
+                foreground: AlxColor.primary,
+                border: AlxColor.primary
             )
         }
     }
