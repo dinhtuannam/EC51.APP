@@ -17,6 +17,6 @@ class LoginViewModel {
     }
     
     func handleSignIn() {
-
+        print(username,password)
     }
 }

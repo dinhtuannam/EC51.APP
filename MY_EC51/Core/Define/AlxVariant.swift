@@ -30,7 +30,7 @@ enum AlxVariant {
         case .warning:
             return Colors(
                 background: AlxColor.warning,
-                foreground: .black,
+                foreground: .white,
                 border: AlxColor.warning
             )
         case .error:

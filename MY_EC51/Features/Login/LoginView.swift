@@ -16,13 +16,15 @@ struct LoginView: View {
                 .font(.largeTitle).fontWeight(.bold)
                 .kerning(1.0)
             
-            TextField("Placeholder", text: /*@PLACEHOLDER=Value@*/.constant(""))
-            TextField("Placeholder", text: /*@PLACEHOLDER=Value@*/.constant(""))
+            TextField("Username", text: $viewModel.username)
+            TextField("Password", text: $viewModel.password)
 
-            AlxButton("SIGN IN") {
-
-            }.padding(.horizontal)
-        }
+            AlxButton("SIGN IN",variant: .primary ) {
+                viewModel.handleSignIn()
+            }
+        }.padding(.horizontal)
+            .background(Color.blue)
+            .ignoresSafeArea()
     }
 }
 

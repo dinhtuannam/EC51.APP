@@ -15,7 +15,7 @@ enum AlxButtonSize {
     var font: Font {
         switch self {
         case .small:
-            return .subheadline
+            return .callout
         case .medium:
             return .headline
         case .large:
@@ -105,7 +105,7 @@ struct AlxButton<Content: View>: View {
                 content()
             }
             .font(size.font)
-            .fontWeight(.semibold)
+            .fontWeight(.bold)
             .lineLimit(1)
             .minimumScaleFactor(0.8)
             .frame(maxWidth: isFullWidth ? .infinity : nil)
@@ -194,7 +194,7 @@ struct AlxButtonTitleContent: View {
 
     private var titleText: some View {
         Text(title)
-            .kerning(5.0)
+            .kerning(1.5)
     }
 
     @ViewBuilder
@@ -210,7 +210,7 @@ struct AlxButtonTitleContent: View {
     VStack(spacing: 12) {
         AlxButton("SIGN IN") {}
         AlxButton("SIGN IN", loadingTitle: "LOADING", isLoading: true) {}
-        AlxButton("WARNING", variant: .warning) {}
+        AlxButton("WARNING", variant: .warning, size: .small) {}
         AlxButton("ERROR", systemImage: "trash", variant: .error) {}
         AlxButton("OUTLINE", systemImage: "arrow.right", iconPosition: .trailing, variant: .outline) {}
         AlxButton(variant: .outline, isFullWidth: false) {
