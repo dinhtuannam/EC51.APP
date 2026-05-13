@@ -11,38 +11,59 @@ struct LoginView: View {
     @State var viewModel = LoginViewModel()
     
     var body: some View {
-        VStack() {
-            Text("EC51 DEMO")
-                .font(.largeTitle).fontWeight(.bold)
-                .kerning(1.0)
-                .padding(.bottom, 12)
-            
-            AlxTextField(
-                "Username",
-                text: $viewModel.username,
-                title: "Username",
-                systemImage: "person",
-                textContentType: .username,
-                submitLabel: .next
-            ).padding(.bottom, 4)
-            
-            AlxTextField(
-                "Password",
-                text: $viewModel.password,
-                title: "Password",
-                systemImage: "lock",
-                isSecure: true,
-                textContentType: .password,
-                submitLabel: .go
-            ) {
-                viewModel.handleSignIn()
-            }.padding(.bottom, 12)
+        if viewModel.isLoggedIn {
+            MainView()
+        } else {
+            VStack() {
+                Text("EC51 DEMO")
+                    .font(.largeTitle).fontWeight(.bold)
+                    .kerning(1.0)
+                    .padding(.bottom, 12)
+                
+                AlxTextField(
+                    "Username",
+                    text: $viewModel.username,
+                    title: "Username",
+                    systemImage: "person",
+                    errorText: viewModel.usernameError,
+                    isDisabled: viewModel.isLoading,
+                    textContentType: .username,
+                    submitLabel: .next
+                ).padding(.bottom, 4)
+                
+                AlxTextField(
+                    "Password",
+                    text: $viewModel.password,
+                    title: "Password",
+                    systemImage: "lock",
+                    errorText: viewModel.passwordError,
+                    isSecure: true,
+                    isDisabled: viewModel.isLoading,
+                    textContentType: .password,
+                    submitLabel: .go
+                ) {
+                    viewModel.handleSignIn()
+                }.padding(.bottom, 12)
 
-            AlxButton("SIGN IN", variant: .primary) {
-                viewModel.handleSignIn()
+                if let errorMessage = viewModel.errorMessage {
+                    Text(errorMessage)
+                        .font(.footnote)
+                        .foregroundStyle(AlxColor.error)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.bottom, 8)
+                }
+
+                AlxButton(
+                    "SIGN IN",
+                    loadingTitle: "SIGNING IN",
+                    variant: .primary,
+                    isLoading: viewModel.isLoading
+                ) {
+                    viewModel.handleSignIn()
+                }
             }
+            .padding(.horizontal)
         }
-        .padding(.horizontal)
     }
 }
 

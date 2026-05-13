@@ -16,6 +16,9 @@
 		22A9F7E22FB4616500086B81 /* AlxColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A9F7E12FB4616500086B81 /* AlxColor.swift */; };
 		22A9F7E62FB473CE00086B81 /* AlxTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A9F7E52FB473CE00086B81 /* AlxTextField.swift */; };
 		22A9F7E82FB47C8100086B81 /* AlxInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A9F7E72FB47C8100086B81 /* AlxInputField.swift */; };
+		22A9F7EB2FB482B700086B81 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A9F7EA2FB482B700086B81 /* APIClient.swift */; };
+		22A9F7EF2FB4850000086B81 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A9F7EE2FB4850000086B81 /* AuthService.swift */; };
+		22A9F7F62FB4899600086B81 /* AuthModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A9F7F52FB4899600086B81 /* AuthModels.swift */; };
 		22D231332FB32FF700D8D9F0 /* MY_EC51App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D231322FB32FF700D8D9F0 /* MY_EC51App.swift */; };
 		22D231352FB32FF700D8D9F0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D231342FB32FF700D8D9F0 /* ContentView.swift */; };
 		22D231372FB32FFA00D8D9F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22D231362FB32FFA00D8D9F0 /* Assets.xcassets */; };
@@ -32,6 +35,9 @@
 		22A9F7E12FB4616500086B81 /* AlxColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlxColor.swift; sourceTree = "<group>"; };
 		22A9F7E52FB473CE00086B81 /* AlxTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlxTextField.swift; sourceTree = "<group>"; };
 		22A9F7E72FB47C8100086B81 /* AlxInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlxInputField.swift; sourceTree = "<group>"; };
+		22A9F7EA2FB482B700086B81 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		22A9F7EE2FB4850000086B81 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		22A9F7F52FB4899600086B81 /* AuthModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModels.swift; sourceTree = "<group>"; };
 		22D2312F2FB32FF700D8D9F0 /* MY_EC51.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MY_EC51.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22D231322FB32FF700D8D9F0 /* MY_EC51App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MY_EC51App.swift; sourceTree = "<group>"; };
 		22D231342FB32FF700D8D9F0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -62,6 +68,7 @@
 		227D9B802FB433BA00D2E979 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				22A9F7E92FB4829F00086B81 /* Network */,
 				227D9B852FB4343E00D2E979 /* Components */,
 				227D9B842FB4340800D2E979 /* Utils */,
 				227D9B822FB433D200D2E979 /* Define */,
@@ -122,6 +129,31 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		22A9F7E92FB4829F00086B81 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				22A9F7EA2FB482B700086B81 /* APIClient.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		22A9F7EC2FB4837800086B81 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				22A9F7F42FB4895C00086B81 /* AuthService */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		22A9F7F42FB4895C00086B81 /* AuthService */ = {
+			isa = PBXGroup;
+			children = (
+				22A9F7EE2FB4850000086B81 /* AuthService.swift */,
+				22A9F7F52FB4899600086B81 /* AuthModels.swift */,
+			);
+			path = AuthService;
+			sourceTree = "<group>";
+		};
 		22D231262FB32FF700D8D9F0 = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +173,7 @@
 		22D231312FB32FF700D8D9F0 /* MY_EC51 */ = {
 			isa = PBXGroup;
 			children = (
+				22A9F7EC2FB4837800086B81 /* Services */,
 				227D9B812FB433C200D2E979 /* Features */,
 				227D9B802FB433BA00D2E979 /* Core */,
 				227D9B7F2FB4300E00D2E979 /* App */,
@@ -234,11 +267,14 @@
 				227D9B892FB4349500D2E979 /* LoginView.swift in Sources */,
 				22A9F7E82FB47C8100086B81 /* AlxInputField.swift in Sources */,
 				22D231352FB32FF700D8D9F0 /* ContentView.swift in Sources */,
+				22A9F7EF2FB4850000086B81 /* AuthService.swift in Sources */,
 				227D9B8F2FB434D900D2E979 /* MainView.swift in Sources */,
 				2259963E2FB4532B00F30E41 /* AlxButton.swift in Sources */,
 				225996402FB45A0100F30E41 /* AlxVariant.swift in Sources */,
 				22D231332FB32FF700D8D9F0 /* MY_EC51App.swift in Sources */,
+				22A9F7F62FB4899600086B81 /* AuthModels.swift in Sources */,
 				227D9B912FB434EC00D2E979 /* MainViewModel.swift in Sources */,
+				22A9F7EB2FB482B700086B81 /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
