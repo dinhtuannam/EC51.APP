@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2259963E2FB4532B00F30E41 /* AlxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2259963D2FB4532B00F30E41 /* AlxButton.swift */; };
+		225996402FB45A0100F30E41 /* AlxButtonVariant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2259963F2FB45A0100F30E41 /* AlxButtonVariant.swift */; };
 		227D9B892FB4349500D2E979 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D9B882FB4349500D2E979 /* LoginView.swift */; };
 		227D9B8D2FB434C500D2E979 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D9B8C2FB434C500D2E979 /* LoginViewModel.swift */; };
 		227D9B8F2FB434D900D2E979 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D9B8E2FB434D900D2E979 /* MainView.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		2259963D2FB4532B00F30E41 /* AlxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlxButton.swift; sourceTree = "<group>"; };
+		2259963F2FB45A0100F30E41 /* AlxButtonVariant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlxButtonVariant.swift; sourceTree = "<group>"; };
 		227D9B882FB4349500D2E979 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		227D9B8C2FB434C500D2E979 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		227D9B8E2FB434D900D2E979 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 		227D9B822FB433D200D2E979 /* Define */ = {
 			isa = PBXGroup;
 			children = (
+				2259963F2FB45A0100F30E41 /* AlxButtonVariant.swift */,
 			);
 			path = Define;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				22D231352FB32FF700D8D9F0 /* ContentView.swift in Sources */,
 				227D9B8F2FB434D900D2E979 /* MainView.swift in Sources */,
 				2259963E2FB4532B00F30E41 /* AlxButton.swift in Sources */,
+				225996402FB45A0100F30E41 /* AlxButtonVariant.swift in Sources */,
 				22D231332FB32FF700D8D9F0 /* MY_EC51App.swift in Sources */,
 				227D9B912FB434EC00D2E979 /* MainViewModel.swift in Sources */,
 			);
