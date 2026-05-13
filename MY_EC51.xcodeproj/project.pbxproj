@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2259963E2FB4532B00F30E41 /* AlxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2259963D2FB4532B00F30E41 /* AlxButton.swift */; };
-		225996402FB45A0100F30E41 /* AlxButtonVariant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2259963F2FB45A0100F30E41 /* AlxButtonVariant.swift */; };
+		225996402FB45A0100F30E41 /* AlxVariant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2259963F2FB45A0100F30E41 /* AlxVariant.swift */; };
 		227D9B892FB4349500D2E979 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D9B882FB4349500D2E979 /* LoginView.swift */; };
 		227D9B8D2FB434C500D2E979 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D9B8C2FB434C500D2E979 /* LoginViewModel.swift */; };
 		227D9B8F2FB434D900D2E979 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D9B8E2FB434D900D2E979 /* MainView.swift */; };
 		227D9B912FB434EC00D2E979 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D9B902FB434EC00D2E979 /* MainViewModel.swift */; };
+		22A9F7E22FB4616500086B81 /* AlxColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A9F7E12FB4616500086B81 /* AlxColor.swift */; };
 		22D231332FB32FF700D8D9F0 /* MY_EC51App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D231322FB32FF700D8D9F0 /* MY_EC51App.swift */; };
 		22D231352FB32FF700D8D9F0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D231342FB32FF700D8D9F0 /* ContentView.swift */; };
 		22D231372FB32FFA00D8D9F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22D231362FB32FFA00D8D9F0 /* Assets.xcassets */; };
@@ -21,11 +22,12 @@
 
 /* Begin PBXFileReference section */
 		2259963D2FB4532B00F30E41 /* AlxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlxButton.swift; sourceTree = "<group>"; };
-		2259963F2FB45A0100F30E41 /* AlxButtonVariant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlxButtonVariant.swift; sourceTree = "<group>"; };
+		2259963F2FB45A0100F30E41 /* AlxVariant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlxVariant.swift; sourceTree = "<group>"; };
 		227D9B882FB4349500D2E979 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		227D9B8C2FB434C500D2E979 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		227D9B8E2FB434D900D2E979 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		227D9B902FB434EC00D2E979 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		22A9F7E12FB4616500086B81 /* AlxColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlxColor.swift; sourceTree = "<group>"; };
 		22D2312F2FB32FF700D8D9F0 /* MY_EC51.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MY_EC51.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22D231322FB32FF700D8D9F0 /* MY_EC51App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MY_EC51App.swift; sourceTree = "<group>"; };
 		22D231342FB32FF700D8D9F0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -75,7 +77,8 @@
 		227D9B822FB433D200D2E979 /* Define */ = {
 			isa = PBXGroup;
 			children = (
-				2259963F2FB45A0100F30E41 /* AlxButtonVariant.swift */,
+				2259963F2FB45A0100F30E41 /* AlxVariant.swift */,
+				22A9F7E12FB4616500086B81 /* AlxColor.swift */,
 			);
 			path = Define;
 			sourceTree = "<group>";
@@ -220,11 +223,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				227D9B8D2FB434C500D2E979 /* LoginViewModel.swift in Sources */,
+				22A9F7E22FB4616500086B81 /* AlxColor.swift in Sources */,
 				227D9B892FB4349500D2E979 /* LoginView.swift in Sources */,
 				22D231352FB32FF700D8D9F0 /* ContentView.swift in Sources */,
 				227D9B8F2FB434D900D2E979 /* MainView.swift in Sources */,
 				2259963E2FB4532B00F30E41 /* AlxButton.swift in Sources */,
-				225996402FB45A0100F30E41 /* AlxButtonVariant.swift in Sources */,
+				225996402FB45A0100F30E41 /* AlxVariant.swift in Sources */,
 				22D231332FB32FF700D8D9F0 /* MY_EC51App.swift in Sources */,
 				227D9B912FB434EC00D2E979 /* MainViewModel.swift in Sources */,
 			);

@@ -21,8 +21,7 @@ struct LoginView: View {
 
             AlxButton("SIGN IN") {
 
-            }
-            .padding(.horizontal)
+            }.padding(.horizontal)
         }
     }
 }

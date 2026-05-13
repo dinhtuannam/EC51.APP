@@ -10,7 +10,7 @@ import SwiftUI
 struct AlxButton: View {
     let title: String
     var systemImage: String?
-    var variant: AlxButtonVariant
+    var variant: AlxVariant
     var isLoading: Bool
     var isDisabled: Bool
     let action: () -> Void
@@ -18,7 +18,7 @@ struct AlxButton: View {
     init(
         _ title: String,
         systemImage: String? = nil,
-        variant: AlxButtonVariant = .primary,
+        variant: AlxVariant = .primary,
         isLoading: Bool = false,
         isDisabled: Bool = false,
         action: @escaping () -> Void
@@ -52,12 +52,12 @@ struct AlxButton: View {
             .padding()
             .background(
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(isDisabled ? AlxButtonColors.disabled : variant.backgroundColor)
+                    .fill(isDisabled ? Color.disabled : variant.backgroundColor)
             )
             .foregroundStyle(currentForegroundColor)
             .overlay(
                 RoundedRectangle(cornerRadius: 12)
-                    .stroke(isDisabled ? AlxButtonColors.disabled : variant.borderColor, lineWidth: 1)
+                    .stroke(isDisabled ? Color.disabled : variant.borderColor, lineWidth: 1)
             )
             .opacity(isDisabled ? 0.7 : 1)
         }
