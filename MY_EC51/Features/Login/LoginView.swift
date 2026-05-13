@@ -29,5 +29,4 @@ struct LoginView: View {
 
 #Preview {
     LoginView()
-        .alxAppBackground()
 }

@@ -15,5 +15,4 @@ struct MainView: View {
 
 #Preview {
     MainView()
-        .alxAppBackground()
 }
