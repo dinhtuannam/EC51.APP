@@ -32,21 +32,23 @@ enum AlxColor {
         blue: 125.0 / 255.0
     )
 
-    static let backgroundTop = Color(
-        red: 232.0 / 255.0,
-        green: 244.0 / 255.0,
-        blue: 255.0 / 255.0
+    static let background = Color(
+        red: 248.0 / 255.0,
+        green: 250.0 / 255.0,
+        blue: 252.0 / 255.0
     )
 
-    static let backgroundMiddle = Color(
-        red: 68.0 / 255.0,
-        green: 151.0 / 255.0,
-        blue: 236.0 / 255.0
+    static let surface = Color.white
+
+    static let border = Color(
+        red: 203.0 / 255.0,
+        green: 213.0 / 255.0,
+        blue: 225.0 / 255.0
     )
 
-    static let backgroundBottom = Color(
-        red: 0.0 / 255.0,
-        green: 57.0 / 255.0,
-        blue: 130.0 / 255.0
+    static let text = Color(
+        red: 15.0 / 255.0,
+        green: 23.0 / 255.0,
+        blue: 42.0 / 255.0
     )
 }

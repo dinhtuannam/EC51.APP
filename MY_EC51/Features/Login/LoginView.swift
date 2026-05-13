@@ -11,13 +11,32 @@ struct LoginView: View {
     @State var viewModel = LoginViewModel()
     
     var body: some View {
-        VStack(spacing: 10) {
+        VStack() {
             Text("EC51 DEMO")
                 .font(.largeTitle).fontWeight(.bold)
                 .kerning(1.0)
+                .padding(.bottom, 12)
             
-            TextField("Username", text: $viewModel.username)
-            TextField("Password", text: $viewModel.password)
+            AlxTextField(
+                "Username",
+                text: $viewModel.username,
+                title: "Username",
+                systemImage: "person",
+                textContentType: .username,
+                submitLabel: .next
+            ).padding(.bottom, 4)
+            
+            AlxTextField(
+                "Password",
+                text: $viewModel.password,
+                title: "Password",
+                systemImage: "lock",
+                isSecure: true,
+                textContentType: .password,
+                submitLabel: .go
+            ) {
+                viewModel.handleSignIn()
+            }.padding(.bottom, 12)
 
             AlxButton("SIGN IN", variant: .primary) {
                 viewModel.handleSignIn()

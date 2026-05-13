@@ -13,10 +13,26 @@ class LoginViewModel {
     var password: String = String()
                     
     func checkInput() -> Bool {
-        return false;
+        var res: Bool = true;
+        if username.isEmpty{
+            res = false;
+        }
+        if password.isEmpty{
+            res = false;
+        }
+        
+        if !res {
+            username = String()
+            password = String()
+        }
+        
+        return true;
     }
     
     func handleSignIn() {
+        if(!checkInput()){
+            return;
+        }
         print(username,password)
     }
 }
