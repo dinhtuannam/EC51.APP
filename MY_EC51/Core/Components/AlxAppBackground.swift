@@ -24,10 +24,11 @@ struct AlxAppBackground: View {
 
 struct AlxAppBackgroundModifier: ViewModifier {
     func body(content: Content) -> some View {
-        ZStack {
-            AlxAppBackground()
-            content
-        }
+        content
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background {
+                AlxAppBackground()
+            }
     }
 }
 
