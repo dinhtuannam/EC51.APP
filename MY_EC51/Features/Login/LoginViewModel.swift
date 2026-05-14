@@ -9,7 +9,7 @@ import Foundation
 import Observation
 
 @Observable
-class LoginViewModel {
+final class LoginViewModel {
     var username = ""
     var password = ""
     var usernameError: String?

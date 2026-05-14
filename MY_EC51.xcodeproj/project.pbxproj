@@ -19,6 +19,20 @@
 		22A9F7EB2FB482B700086B81 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A9F7EA2FB482B700086B81 /* APIClient.swift */; };
 		22A9F7EF2FB4850000086B81 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A9F7EE2FB4850000086B81 /* AuthService.swift */; };
 		22A9F7F62FB4899600086B81 /* AuthModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A9F7F52FB4899600086B81 /* AuthModels.swift */; };
+		22A9F7F92FB56E5000086B81 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A9F7F82FB56E5000086B81 /* DashboardView.swift */; };
+		22A9F7FB2FB56E5F00086B81 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A9F7FA2FB56E5F00086B81 /* DashboardViewModel.swift */; };
+		22A9F8002FB56EF900086B81 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A9F7FF2FB56EF900086B81 /* ProductView.swift */; };
+		22A9F8022FB56F0700086B81 /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A9F8012FB56F0700086B81 /* ProductViewModel.swift */; };
+		22A9F8042FB56F1900086B81 /* InventoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A9F8032FB56F1900086B81 /* InventoryView.swift */; };
+		22A9F8062FB56F2A00086B81 /* InventoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A9F8052FB56F2A00086B81 /* InventoryViewModel.swift */; };
+		22A9F8082FB56F3800086B81 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A9F8072FB56F3800086B81 /* ProfileView.swift */; };
+		22A9F80A2FB56F4B00086B81 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A9F8092FB56F4B00086B81 /* ProfileViewModel.swift */; };
+		22A9F80E2FB575C700086B81 /* DashboardMetricCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A9F80D2FB575C700086B81 /* DashboardMetricCardView.swift */; };
+		22A9F8102FB5AB1100086B81 /* AlxScreenHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A9F80F2FB5AB1100086B81 /* AlxScreenHeader.swift */; };
+		22A9F8122FB5B49B00086B81 /* AlxBasicLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A9F8112FB5B49B00086B81 /* AlxBasicLayout.swift */; };
+		22A9F8142FB5BD3100086B81 /* AlxCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A9F8132FB5BD3100086B81 /* AlxCard.swift */; };
+		22A9F8182FB5BDF000086B81 /* TopSellingProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A9F8172FB5BDF000086B81 /* TopSellingProductView.swift */; };
+		22A9F81A2FB5C63300086B81 /* AlxIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A9F8192FB5C63300086B81 /* AlxIcon.swift */; };
 		22D231332FB32FF700D8D9F0 /* MY_EC51App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D231322FB32FF700D8D9F0 /* MY_EC51App.swift */; };
 		22D231352FB32FF700D8D9F0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D231342FB32FF700D8D9F0 /* ContentView.swift */; };
 		22D231372FB32FFA00D8D9F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22D231362FB32FFA00D8D9F0 /* Assets.xcassets */; };
@@ -38,6 +52,20 @@
 		22A9F7EA2FB482B700086B81 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		22A9F7EE2FB4850000086B81 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		22A9F7F52FB4899600086B81 /* AuthModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModels.swift; sourceTree = "<group>"; };
+		22A9F7F82FB56E5000086B81 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		22A9F7FA2FB56E5F00086B81 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		22A9F7FF2FB56EF900086B81 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
+		22A9F8012FB56F0700086B81 /* ProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
+		22A9F8032FB56F1900086B81 /* InventoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryView.swift; sourceTree = "<group>"; };
+		22A9F8052FB56F2A00086B81 /* InventoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryViewModel.swift; sourceTree = "<group>"; };
+		22A9F8072FB56F3800086B81 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		22A9F8092FB56F4B00086B81 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		22A9F80D2FB575C700086B81 /* DashboardMetricCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardMetricCardView.swift; sourceTree = "<group>"; };
+		22A9F80F2FB5AB1100086B81 /* AlxScreenHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlxScreenHeader.swift; sourceTree = "<group>"; };
+		22A9F8112FB5B49B00086B81 /* AlxBasicLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlxBasicLayout.swift; sourceTree = "<group>"; };
+		22A9F8132FB5BD3100086B81 /* AlxCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlxCard.swift; sourceTree = "<group>"; };
+		22A9F8172FB5BDF000086B81 /* TopSellingProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopSellingProductView.swift; sourceTree = "<group>"; };
+		22A9F8192FB5C63300086B81 /* AlxIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlxIcon.swift; sourceTree = "<group>"; };
 		22D2312F2FB32FF700D8D9F0 /* MY_EC51.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MY_EC51.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22D231322FB32FF700D8D9F0 /* MY_EC51App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MY_EC51App.swift; sourceTree = "<group>"; };
 		22D231342FB32FF700D8D9F0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -79,6 +107,10 @@
 		227D9B812FB433C200D2E979 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				22A9F7FE2FB56EDD00086B81 /* Profile */,
+				22A9F7FD2FB56ED700086B81 /* Inventory */,
+				22A9F7FC2FB56EB600086B81 /* Product */,
+				22A9F7F72FB56E2300086B81 /* Dashboard */,
 				227D9B872FB4346B00D2E979 /* Main */,
 				227D9B862FB4344700D2E979 /* Login */,
 			);
@@ -107,6 +139,10 @@
 				2259963D2FB4532B00F30E41 /* AlxButton.swift */,
 				22A9F7E52FB473CE00086B81 /* AlxTextField.swift */,
 				22A9F7E72FB47C8100086B81 /* AlxInputField.swift */,
+				22A9F80F2FB5AB1100086B81 /* AlxScreenHeader.swift */,
+				22A9F8112FB5B49B00086B81 /* AlxBasicLayout.swift */,
+				22A9F8132FB5BD3100086B81 /* AlxCard.swift */,
+				22A9F8192FB5C63300086B81 /* AlxIcon.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -152,6 +188,68 @@
 				22A9F7F52FB4899600086B81 /* AuthModels.swift */,
 			);
 			path = AuthService;
+			sourceTree = "<group>";
+		};
+		22A9F7F72FB56E2300086B81 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				22A9F80C2FB5759400086B81 /* Components */,
+				22A9F7F82FB56E5000086B81 /* DashboardView.swift */,
+				22A9F7FA2FB56E5F00086B81 /* DashboardViewModel.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		22A9F7FC2FB56EB600086B81 /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				22A9F7FF2FB56EF900086B81 /* ProductView.swift */,
+				22A9F8012FB56F0700086B81 /* ProductViewModel.swift */,
+			);
+			path = Product;
+			sourceTree = "<group>";
+		};
+		22A9F7FD2FB56ED700086B81 /* Inventory */ = {
+			isa = PBXGroup;
+			children = (
+				22A9F8032FB56F1900086B81 /* InventoryView.swift */,
+				22A9F8052FB56F2A00086B81 /* InventoryViewModel.swift */,
+			);
+			path = Inventory;
+			sourceTree = "<group>";
+		};
+		22A9F7FE2FB56EDD00086B81 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				22A9F8072FB56F3800086B81 /* ProfileView.swift */,
+				22A9F8092FB56F4B00086B81 /* ProfileViewModel.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		22A9F80C2FB5759400086B81 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				22A9F8162FB5BDBF00086B81 /* TopSellingProduct */,
+				22A9F8152FB5BDB100086B81 /* DashboardMetricCard */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		22A9F8152FB5BDB100086B81 /* DashboardMetricCard */ = {
+			isa = PBXGroup;
+			children = (
+				22A9F80D2FB575C700086B81 /* DashboardMetricCardView.swift */,
+			);
+			path = DashboardMetricCard;
+			sourceTree = "<group>";
+		};
+		22A9F8162FB5BDBF00086B81 /* TopSellingProduct */ = {
+			isa = PBXGroup;
+			children = (
+				22A9F8172FB5BDF000086B81 /* TopSellingProductView.swift */,
+			);
+			path = TopSellingProduct;
 			sourceTree = "<group>";
 		};
 		22D231262FB32FF700D8D9F0 = {
@@ -265,15 +363,29 @@
 				22A9F7E62FB473CE00086B81 /* AlxTextField.swift in Sources */,
 				22A9F7E22FB4616500086B81 /* AlxColor.swift in Sources */,
 				227D9B892FB4349500D2E979 /* LoginView.swift in Sources */,
+				22A9F8002FB56EF900086B81 /* ProductView.swift in Sources */,
+				22A9F8062FB56F2A00086B81 /* InventoryViewModel.swift in Sources */,
+				22A9F8102FB5AB1100086B81 /* AlxScreenHeader.swift in Sources */,
 				22A9F7E82FB47C8100086B81 /* AlxInputField.swift in Sources */,
+				22A9F8042FB56F1900086B81 /* InventoryView.swift in Sources */,
 				22D231352FB32FF700D8D9F0 /* ContentView.swift in Sources */,
 				22A9F7EF2FB4850000086B81 /* AuthService.swift in Sources */,
+				22A9F7FB2FB56E5F00086B81 /* DashboardViewModel.swift in Sources */,
+				22A9F7F92FB56E5000086B81 /* DashboardView.swift in Sources */,
+				22A9F80E2FB575C700086B81 /* DashboardMetricCardView.swift in Sources */,
+				22A9F8182FB5BDF000086B81 /* TopSellingProductView.swift in Sources */,
 				227D9B8F2FB434D900D2E979 /* MainView.swift in Sources */,
 				2259963E2FB4532B00F30E41 /* AlxButton.swift in Sources */,
 				225996402FB45A0100F30E41 /* AlxVariant.swift in Sources */,
 				22D231332FB32FF700D8D9F0 /* MY_EC51App.swift in Sources */,
+				22A9F8122FB5B49B00086B81 /* AlxBasicLayout.swift in Sources */,
+				22A9F8022FB56F0700086B81 /* ProductViewModel.swift in Sources */,
 				22A9F7F62FB4899600086B81 /* AuthModels.swift in Sources */,
+				22A9F81A2FB5C63300086B81 /* AlxIcon.swift in Sources */,
+				22A9F8142FB5BD3100086B81 /* AlxCard.swift in Sources */,
+				22A9F80A2FB56F4B00086B81 /* ProfileViewModel.swift in Sources */,
 				227D9B912FB434EC00D2E979 /* MainViewModel.swift in Sources */,
+				22A9F8082FB56F3800086B81 /* ProfileView.swift in Sources */,
 				22A9F7EB2FB482B700086B81 /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
