@@ -17,7 +17,7 @@ struct LoginView: View {
             VStack() {
                 Text("EC51 DEMO")
                     .font(.largeTitle).fontWeight(.bold)
-                    .kerning(1.0)
+                    .kerning(2.0)
                     .padding(.bottom, 12)
                 
                 AlxTextField(
@@ -44,7 +44,7 @@ struct LoginView: View {
                 ) {
                     viewModel.handleSignIn()
                 }.padding(.bottom, 12)
-
+                
                 if let errorMessage = viewModel.errorMessage {
                     Text(errorMessage)
                         .font(.footnote)
@@ -52,7 +52,7 @@ struct LoginView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.bottom, 8)
                 }
-
+                
                 AlxButton(
                     "SIGN IN",
                     loadingTitle: "SIGNING IN",
@@ -63,10 +63,11 @@ struct LoginView: View {
                 }
             }
             .padding(.horizontal)
+            .offset(y: -50)
         }
     }
 }
 
 #Preview {
-    LoginView()
+    LoginView().beigeBackground()
 }

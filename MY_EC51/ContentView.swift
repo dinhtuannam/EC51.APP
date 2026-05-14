@@ -7,15 +7,26 @@
 
 import SwiftUI
 
+struct BackgroundBeige: ViewModifier {
+    func body(content: Content) -> some View {
+        ZStack {
+            Color(red: 236/255, green: 233/255, blue: 230/255)
+                .ignoresSafeArea()
+            content
+        }
+    }
+}
+
+extension View {
+    func beigeBackground() -> some View {
+        self.modifier(BackgroundBeige())
+    }
+}
+
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        LoginView()
+            .beigeBackground()
     }
 }
 
