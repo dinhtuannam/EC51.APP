@@ -45,6 +45,7 @@ struct AlxBaseLayout<Content: View>: View {
                 content
             }.frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(8)
+            .beigeBackground()
         }
     }
 }

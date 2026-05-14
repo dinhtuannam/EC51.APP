@@ -41,9 +41,13 @@ struct MainView: View {
                 .tag(3)
         }
         .accentColor(.blue)
+        .onAppear() {
+            // Thiết lập màu nền trắng cho tab bar
+            UITabBar.appearance().backgroundColor = UIColor.white
+        }
     }
 }
 
 #Preview {
-    MainView().beigeBackground()
+    MainView()
 }

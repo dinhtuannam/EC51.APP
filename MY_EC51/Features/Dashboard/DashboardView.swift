@@ -20,7 +20,7 @@ struct DashboardView: View {
     }
     
     var body: some View {
-        AlxBaseLayout(title: "Dashboard", icon: "person.circle.fill") {
+        AlxBaseLayout(title: "Dashboard", icon: "house.fill") {
             LazyVGrid(columns: columns, spacing: 16) {
                 ForEach(0..<4) { _ in
                     DashboardMetricCardView()
