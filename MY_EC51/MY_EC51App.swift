@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct MY_EC51App: App {
+    private let appEnvironment = AppEnvironment.live()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AppRootView(environment: appEnvironment)
         }
     }
 }

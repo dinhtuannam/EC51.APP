@@ -16,18 +16,16 @@ final class LoginViewModel {
     var passwordError: String?
     var errorMessage: String?
     var isLoading = false
-    var isLoggedIn = false
-    var currentUser: AuthUser?
 
-    @ObservationIgnored private let authService: any AuthServiceProtocol
-    @ObservationIgnored private let userDefaults: UserDefaults
+    @ObservationIgnored private let loginUseCase: any LoginUseCaseProtocol
+    @ObservationIgnored private let navigationCoordinator: any NavigationCoordinating
 
     init(
-        authService: any AuthServiceProtocol = AuthService(),
-        userDefaults: UserDefaults = .standard
+        loginUseCase: any LoginUseCaseProtocol,
+        navigationCoordinator: any NavigationCoordinating
     ) {
-        self.authService = authService
-        self.userDefaults = userDefaults
+        self.loginUseCase = loginUseCase
+        self.navigationCoordinator = navigationCoordinator
     }
 
     @MainActor
@@ -70,26 +68,15 @@ final class LoginViewModel {
         }
 
         do {
-            let response = try await authService.login(
+            let session = try await loginUseCase.execute(
                 username: username.trimmingCharacters(in: .whitespacesAndNewlines),
                 password: password
             )
 
-            saveSession(response)
-            currentUser = response.user
-            isLoggedIn = true
+            navigationCoordinator.showMain(session: session)
             password = ""
         } catch {
             errorMessage = error.localizedDescription
         }
-    }
-
-    private func saveSession(_ response: LoginResponse) {
-        userDefaults.set(response.token, forKey: AuthStorageKey.token)
-        userDefaults.set(response.user.id, forKey: AuthStorageKey.userId)
-        userDefaults.set(response.user.fullName, forKey: AuthStorageKey.fullName)
-        userDefaults.set(response.user.username, forKey: AuthStorageKey.username)
-        userDefaults.set(response.user.email, forKey: AuthStorageKey.email)
-        userDefaults.set(response.user.role, forKey: AuthStorageKey.role)
     }
 }

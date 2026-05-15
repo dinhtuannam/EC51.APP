@@ -8,46 +8,49 @@
 import SwiftUI
 
 struct MainView: View {
-    @State private var selectedTab = 0
+    @Bindable var appState: AppState
     
     var body: some View {
-        TabView(selection: $selectedTab) {
-            // Tab 1: Dashboard (Nội dung hiện tại của MainView)
-            DashboardView()
-                .tabItem {
-                    Label("Dashboard", systemImage: "house.fill")
-                }
-                .tag(0)
+        TabView(selection: $appState.selectedTab) {
+            NavigationStack(path: $appState.dashboardPath) {
+                DashboardView(subtitle: appState.currentSession?.user.fullName)
+            }
+            .tabItem {
+                Label("Dashboard", systemImage: "house.fill")
+            }
+            .tag(AppTab.dashboard)
             
-            // Tab 2: Product
-            ProductView()
-                .tabItem {
-                    Label("Product", systemImage: "cube.box.fill")
-                }
-                .tag(1)
+            NavigationStack(path: $appState.productPath) {
+                ProductView()
+            }
+            .tabItem {
+                Label("Product", systemImage: "cube.box.fill")
+            }
+            .tag(AppTab.product)
             
-            // Tab 3: Inventory
-            InventoryView()
-                .tabItem {
-                    Label("Inventory", systemImage: "shippingbox.fill")
-                }
-                .tag(2)
+            NavigationStack(path: $appState.inventoryPath) {
+                InventoryView()
+            }
+            .tabItem {
+                Label("Inventory", systemImage: "shippingbox.fill")
+            }
+            .tag(AppTab.inventory)
             
-            // Tab 4: Profile
-            ProfileView()
-                .tabItem {
-                    Label("Profile", systemImage: "person.circle.fill")
-                }
-                .tag(3)
+            NavigationStack(path: $appState.profilePath) {
+                ProfileView()
+            }
+            .tabItem {
+                Label("Profile", systemImage: "person.circle.fill")
+            }
+            .tag(AppTab.profile)
         }
-        .accentColor(.blue)
-        .onAppear() {
-            // Thiết lập màu nền trắng cho tab bar
-            UITabBar.appearance().backgroundColor = UIColor.white
-        }
+        .tint(.blue)
+        .toolbarBackground(.white, for: .tabBar)
+        .toolbarBackground(.visible, for: .tabBar)
     }
 }
 
 #Preview {
-    MainView()
+    MainView(appState: AppEnvironment.preview().appState)
 }
+

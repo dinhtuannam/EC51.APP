@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct DashboardView: View {
+    let subtitle: String?
+
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
     
     var body: some View {
-        AlxBaseLayout(title: "Dashboard", icon: "house.fill") {
+        AlxBaseLayout(title: "Dashboard", icon: "house.fill", subtitle: subtitle) {
             LazyVGrid(columns: columns) {
                 ForEach(0..<4) { _ in
                     DashboardMetricCardView()
@@ -39,5 +41,6 @@ struct DashboardView: View {
 }
 
 #Preview {
-    DashboardView()
+    DashboardView(subtitle: "Preview User")
 }
+

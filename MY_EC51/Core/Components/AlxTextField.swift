@@ -8,6 +8,7 @@
 import SwiftUI
 import UIKit
 
+// SwiftUI keyboard and text-content modifiers use UIKit platform types.
 enum AlxTextFieldSize {
     case small
     case medium

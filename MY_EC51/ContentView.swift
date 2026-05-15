@@ -25,8 +25,7 @@ extension View {
 
 struct ContentView: View {
     var body: some View {
-        LoginView()
-            .beigeBackground()
+        AppRootView(environment: .preview())
     }
 }
 
