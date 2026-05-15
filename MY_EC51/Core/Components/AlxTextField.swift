@@ -17,11 +17,11 @@ enum AlxTextFieldSize {
     var font: Font {
         switch self {
         case .small:
-            return .callout
+            return .custom(AlxFontWeight.regular.fontName, size: 15, relativeTo: .callout)
         case .medium:
-            return .body
+            return .custom(AlxFontWeight.regular.fontName, size: 16, relativeTo: .body)
         case .large:
-            return .title3
+            return .custom(AlxFontWeight.regular.fontName, size: 20, relativeTo: .title3)
         }
     }
 
@@ -117,10 +117,7 @@ struct AlxTextField: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             if let title {
-                Text(title)
-                    .font(.subheadline)
-                    .fontWeight(.semibold)
-                    .foregroundStyle(labelColor)
+                AlxText(title, style: .subheadline, color: labelColor)
             }
 
             HStack(spacing: 10) {
@@ -163,13 +160,9 @@ struct AlxTextField: View {
             .opacity(isDisabled ? 0.75 : 1)
 
             if let message = errorText, !message.isEmpty {
-                Text(message)
-                    .font(.caption)
-                    .foregroundStyle(AlxColor.error)
+                AlxText(message, style: .caption, color: AlxColor.error)
             } else if let helperText, !helperText.isEmpty {
-                Text(helperText)
-                    .font(.caption)
-                    .foregroundStyle(AlxColor.disabled)
+                AlxText(helperText, style: .caption, color: AlxColor.disabled)
             }
         }
     }

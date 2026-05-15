@@ -15,11 +15,11 @@ enum AlxButtonSize {
     var font: Font {
         switch self {
         case .small:
-            return .callout
+            return .custom(AlxFontWeight.semibold.fontName, size: 15, relativeTo: .callout)
         case .medium:
-            return .headline
+            return .custom(AlxFontWeight.semibold.fontName, size: 16, relativeTo: .headline)
         case .large:
-            return .title3
+            return .custom(AlxFontWeight.semibold.fontName, size: 20, relativeTo: .title3)
         }
     }
 
@@ -53,6 +53,17 @@ enum AlxButtonSize {
             return 16
         case .large:
             return 18
+        }
+    }
+
+    var textStyle: AlxTextStyle {
+        switch self {
+        case .small:
+            return .buttonSmall
+        case .medium:
+            return .button
+        case .large:
+            return .buttonLarge
         }
     }
 }
@@ -168,7 +179,8 @@ extension AlxButton where Content == AlxButtonTitleContent {
                 title: isLoading ? loadingTitle ?? title : title,
                 systemImage: isLoading ? nil : systemImage,
                 iconPosition: iconPosition,
-                iconSize: size.iconSize
+                iconSize: size.iconSize,
+                textStyle: size.textStyle
             )
         }
     }
@@ -179,6 +191,7 @@ struct AlxButtonTitleContent: View {
     let systemImage: String?
     let iconPosition: AlxButtonIconPosition
     let iconSize: CGFloat
+    let textStyle: AlxTextStyle
 
     var body: some View {
         HStack(spacing: 8) {
@@ -193,8 +206,7 @@ struct AlxButtonTitleContent: View {
     }
 
     private var titleText: some View {
-        Text(title)
-            .kerning(1.5)
+        AlxText(title, style: textStyle, tracking: 1.5)
     }
 
     @ViewBuilder
@@ -218,7 +230,7 @@ struct AlxButtonTitleContent: View {
         } content: {
             HStack(spacing: 6) {
                 Image(systemName: "plus")
-                Text("CUSTOM")
+                AlxText("CUSTOM", style: .button)
             }
         }
     }

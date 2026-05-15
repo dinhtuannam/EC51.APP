@@ -16,9 +16,7 @@ struct LoginView: View {
     
     var body: some View {
         VStack {
-            Text("EC51 DEMO")
-                .font(.largeTitle).fontWeight(.bold)
-                .kerning(2.0)
+            AlxText("EC51 DEMO", style: .display, tracking: 2)
                 .padding(.bottom, 12)
             
             AlxTextField(
@@ -47,9 +45,7 @@ struct LoginView: View {
             }.padding(.bottom, 12)
             
             if let errorMessage = viewModel.errorMessage {
-                Text(errorMessage)
-                    .font(.footnote)
-                    .foregroundStyle(AlxColor.error)
+                AlxText(errorMessage, style: .footnote, color: AlxColor.error)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.bottom, 8)
             }

@@ -11,6 +11,10 @@ import SwiftUI
 struct MY_EC51App: App {
     private let appEnvironment = AppEnvironment.live()
 
+    init() {
+        AlxFontRegistry.registerFonts()
+    }
+
     var body: some Scene {
         WindowGroup {
             AppRootView(environment: appEnvironment)

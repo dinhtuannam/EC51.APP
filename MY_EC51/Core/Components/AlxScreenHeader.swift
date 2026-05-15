@@ -38,9 +38,7 @@ struct AlxScreenHeader<Accessory: View>: View {
     var body: some View {
         HStack(alignment: .center) {
             VStack(alignment: .leading, spacing: 4) {
-                Text(displaySubtitle)
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
+                AlxText(displaySubtitle, style: .subheadline, color: .gray)
                 
                 HStack(alignment: .center, spacing: 4) {
                     if let icon = icon {
@@ -49,9 +47,7 @@ struct AlxScreenHeader<Accessory: View>: View {
                             .foregroundStyle(.blue)
                     }
                     
-                    Text(title)
-                        .font(.title)
-                        .fontWeight(.bold)
+                    AlxText(title, style: .title)
                 }
             }
             

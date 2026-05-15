@@ -22,15 +22,11 @@ struct TopSellingProductView: View {
                 }
                 .frame(width: 54, height: 54)
                 VStack(alignment: .leading, spacing: 3) {
-                    Text("Microsoft 365 Business")
-                        .font(.system(size: 20, weight: .medium))
+                    AlxText("Microsoft 365 Business", style: .title2)
                     HStack(spacing: 3) {
-                        Text("Quantity:")
-                            .font(.system(size: 16, weight: .medium))
-                            .foregroundStyle(.secondary)
+                        AlxText("Quantity:", style: .body, color: .secondary)
                             .blur(radius: 0.3)
-                        Text("25")
-                            .font(.system(size: 18, weight: .semibold))
+                        AlxText("25", style: .headline)
                     }
                 }
                 Spacer()

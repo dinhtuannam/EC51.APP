@@ -13,15 +13,9 @@ struct DashboardMetricCardView: View {
             Image(systemName: "chart.line.uptrend.xyaxis")
                 .font(.system(size: 50)) // Size to hơn
                 .foregroundColor(.blue)  // Màu xanh lá
-            Text("Revenue")
-                .font(.title2)
-                .fontWeight(.bold)
-                .kerning(1.5)
+            AlxText("Revenue", style: .title2, tracking: 1.5)
                 .padding(.leading, 4)
-            Text("390,496$")
-                .font(.title)
-                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                .kerning(1.5)
+            AlxText("390,496$", style: .title, tracking: 1.5)
                 .padding(.leading, 4)
         }).frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(8)

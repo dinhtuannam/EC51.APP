@@ -7,15 +7,12 @@
 
 import SwiftUI
 
-// MARK: - Swipe Direction
 enum SwipeDirection {
-    case left, right
+    case left
+    case right
 }
 
-// MARK: - AlxCard
 struct AlxCard<Content: View, SwipeContent: View>: View {
-
-    // MARK: Props
     var title: String?
     var cornerRadius: CGFloat
     var swipeDirection: SwipeDirection
@@ -26,13 +23,11 @@ struct AlxCard<Content: View, SwipeContent: View>: View {
     let content: Content
     let swipeContent: SwipeContent?
 
-    // MARK: State
     @State private var offsetX: CGFloat = 0
-    @State private var isRevealed: Bool = false
+    @State private var isRevealed = false
 
     private let revealWidth: CGFloat = 80
 
-    // MARK: Init — có swipeContent
     init(
         title: String? = nil,
         cornerRadius: CGFloat = 16,
@@ -53,15 +48,14 @@ struct AlxCard<Content: View, SwipeContent: View>: View {
         self.swipeContent = swipeContent()
     }
 
-    // MARK: Body
     var body: some View {
         cardLayer
             .offset(x: offsetX)
             .animation(.spring(response: 0.38, dampingFraction: 0.78), value: offsetX)
             .gesture(swipeContent != nil ? dragGesture : nil)
             .background(alignment: swipeDirection == .left ? .trailing : .leading) {
-                if let sc = swipeContent {
-                    sc
+                if let swipeContent {
+                    swipeContent
                         .frame(width: revealWidth)
                         .opacity(revealOpacity)
                         .scaleEffect(
@@ -74,12 +68,12 @@ struct AlxCard<Content: View, SwipeContent: View>: View {
             .shadow(color: shadowColor, radius: 10, x: 0, y: 4)
     }
 
-    // MARK: - Card Layer
     private var cardLayer: some View {
         VStack(alignment: .leading, spacing: 0) {
-            if let title = title {
+            if let title {
                 titleHeader(title)
             }
+
             content
                 .padding(.horizontal, 12)
                 .padding(.vertical, title == nil ? 16 : 12)
@@ -90,34 +84,32 @@ struct AlxCard<Content: View, SwipeContent: View>: View {
         .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
     }
 
-    // MARK: - Title Header
-    @ViewBuilder
     private func titleHeader(_ title: String) -> some View {
-        HStack(spacing: 6) {
-            RoundedRectangle(cornerRadius: 2)
-                .fill(LinearGradient(
-                    colors: [.blue, .indigo],
-                    startPoint: .top,
-                    endPoint: .bottom
-                ))
-                .frame(width: 3, height: 20)
+        VStack(spacing: 0) {
+            HStack(spacing: 6) {
+                RoundedRectangle(cornerRadius: 2)
+                    .fill(
+                        LinearGradient(
+                            colors: [.blue, .indigo],
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                    )
+                    .frame(width: 3, height: 20)
 
-            Text(title)
-                .font(.system(size: 20, weight: .semibold, design: .rounded))
-                .kerning(2)
-                .foregroundStyle(.primary)
+                AlxText(title, style: .title2, tracking: 2)
 
-            Spacer()
-        }
-        .padding(.horizontal, 12)
-        .padding(.top, 14)
-        .padding(.bottom, 10)
-
-        Divider()
+                Spacer()
+            }
             .padding(.horizontal, 12)
+            .padding(.top, 14)
+            .padding(.bottom, 10)
+
+            Divider()
+                .padding(.horizontal, 12)
+        }
     }
 
-    // MARK: - Drag Gesture
     private var dragGesture: some Gesture {
         DragGesture(minimumDistance: 10)
             .onChanged { value in
@@ -128,7 +120,8 @@ struct AlxCard<Content: View, SwipeContent: View>: View {
                     let base: CGFloat = isRevealed
                         ? (swipeDirection == .left ? -revealWidth : revealWidth)
                         : 0
-                    let delta = (translation - (isRevealed ? (swipeDirection == .left ? -revealWidth : revealWidth) : 0)) * 0.85
+                    let revealedOffset = swipeDirection == .left ? -revealWidth : revealWidth
+                    let delta = (translation - (isRevealed ? revealedOffset : 0)) * 0.85
                     let raw = base + delta
                     offsetX = swipeDirection == .left
                         ? max(raw, -revealWidth * 1.3)
@@ -166,7 +159,6 @@ struct AlxCard<Content: View, SwipeContent: View>: View {
             }
     }
 
-    // MARK: - Computed helpers
     private var revealOpacity: Double {
         let progress = min(abs(offsetX) / revealWidth, 1.0)
         return Double(progress)
@@ -178,7 +170,6 @@ struct AlxCard<Content: View, SwipeContent: View>: View {
     }
 }
 
-// MARK: - Init không có swipeContent (EmptyView)
 extension AlxCard where SwipeContent == EmptyView {
     init(
         title: String? = nil,
@@ -198,34 +189,33 @@ extension AlxCard where SwipeContent == EmptyView {
     }
 }
 
-// MARK: - Preview
 #Preview {
     ScrollView {
         VStack(spacing: 20) {
-
-            // ✅ Card KHÔNG có swipeContent
             AlxCard(title: "Top selling product") {
-                Text("Hello")
-                    .font(.system(size: 15))
-                    .foregroundStyle(.secondary)
+                AlxText("Hello", style: .subheadline, color: .secondary)
             }
 
-            // Card with title + swipe left (delete)
-            AlxCard(title: "Đơn hàng #1042") {
+            AlxCard(title: "Order #1042") {
                 HStack(spacing: 12) {
                     RoundedRectangle(cornerRadius: 10)
-                        .fill(LinearGradient(colors: [.orange, .pink], startPoint: .topLeading, endPoint: .bottomTrailing))
+                        .fill(
+                            LinearGradient(
+                                colors: [.orange, .pink],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+                        )
                         .frame(width: 44, height: 44)
                         .overlay(Image(systemName: "shippingbox.fill").foregroundStyle(.white))
 
                     VStack(alignment: .leading, spacing: 3) {
-                        Text("Áo thun basic trắng")
-                            .font(.system(size: 15, weight: .medium))
-                        Text("Số lượng: 2  ·  250.000đ")
-                            .font(.system(size: 13))
-                            .foregroundStyle(.secondary)
+                        AlxText("Basic white t-shirt", style: .subheadline)
+                        AlxText("Quantity: 2 - 250.000d", style: .footnote, color: .secondary)
                     }
+
                     Spacer()
+
                     Image(systemName: "chevron.right")
                         .font(.system(size: 13, weight: .semibold))
                         .foregroundStyle(.tertiary)
@@ -235,55 +225,16 @@ extension AlxCard where SwipeContent == EmptyView {
                     VStack(spacing: 4) {
                         Image(systemName: "trash.fill")
                             .font(.system(size: 18, weight: .semibold))
-                        Text("Xoá")
-                            .font(.system(size: 11, weight: .semibold))
+                        AlxText("Delete", style: .caption, color: .white)
                     }
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(
-                        LinearGradient(colors: [.red, Color(red: 0.8, green: 0.1, blue: 0.1)],
-                                       startPoint: .top, endPoint: .bottom)
-                    )
-                }
-            }
-
-            // Card without title + swipe right (pin)
-            AlxCard(swipeDirection: .right, backgroundColor: Color(.secondarySystemBackground)) {
-                HStack(spacing: 12) {
-                    Circle()
-                        .fill(LinearGradient(colors: [.cyan, .blue], startPoint: .topLeading, endPoint: .bottomTrailing))
-                        .frame(width: 44, height: 44)
-                        .overlay(
-                            Text("AN")
-                                .font(.system(size: 15, weight: .bold))
-                                .foregroundStyle(.white)
+                        LinearGradient(
+                            colors: [.red, Color(red: 0.8, green: 0.1, blue: 0.1)],
+                            startPoint: .top,
+                            endPoint: .bottom
                         )
-                    VStack(alignment: .leading, spacing: 3) {
-                        Text("Anh Nguyễn")
-                            .font(.system(size: 15, weight: .medium))
-                        Text("Hãy kiểm tra đơn hàng nhé 👋")
-                            .font(.system(size: 13))
-                            .foregroundStyle(.secondary)
-                            .lineLimit(1)
-                    }
-                    Spacer()
-                    Text("10:24")
-                        .font(.system(size: 12))
-                        .foregroundStyle(.tertiary)
-                }
-            } swipeContent: {
-                Button { print("Pin") } label: {
-                    VStack(spacing: 4) {
-                        Image(systemName: "pin.fill")
-                            .font(.system(size: 18, weight: .semibold))
-                        Text("Ghim")
-                            .font(.system(size: 11, weight: .semibold))
-                    }
-                    .foregroundStyle(.white)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(
-                        LinearGradient(colors: [.indigo, .purple],
-                                       startPoint: .top, endPoint: .bottom)
                     )
                 }
             }
@@ -293,3 +244,4 @@ extension AlxCard where SwipeContent == EmptyView {
     }
     .background(Color(.systemGroupedBackground))
 }
+

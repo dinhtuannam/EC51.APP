@@ -51,9 +51,8 @@ struct AlxBaseLayout: View {
         subtitle: "Preview User"
     ) {
         VStack {
-            Text("Dashboard Content")
-                .font(.largeTitle)
-            Text("Your content here")
+            AlxText("Dashboard Content", style: .display)
+            AlxText("Your content here", style: .body)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.red)
