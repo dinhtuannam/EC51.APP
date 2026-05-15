@@ -44,7 +44,7 @@ Da refactor luong Auth/Login va dieu huong root de dua code ve dung huong MVVM +
 - Xoa `MY_EC51/Services/AuthService/AuthService.swift` va `MY_EC51/Services/AuthService/AuthModels.swift` vi da thay bang Data layer moi.
 - Xoa thu muc rong `MY_EC51/Services/AuthService` va `MY_EC51/Services`.
 - Xoa `MY_EC51/ContentView.swift` vi app entry point da dung truc tiep `AppRootView`.
-- Chuyen `beigeBackground()` tu `ContentView.swift` sang `MY_EC51/Core/Components/BackgroundBeige.swift` de giu modifier dung chung.
+- Thay `BackgroundBeige`/`.beigeBackground()` bang `MY_EC51/Core/Components/AppBackground.swift`. Nền app được đặt ở `AppRootView` và các preview dùng cùng wrapper, không rải modifier theo từng feature.
 - Xoa `MY_EC51/Features/Main/MainViewModel.swift` vi file trong, khong con vai tro sau khi main tab state/navigation chuyen sang `AppState`.
 - Xoa `MY_EC51/Data/Services/AuthAPIService.swift` va thu muc `MY_EC51/Data/Services` theo yeu cau gom logic truy van vao repository.
 - Xoa `MY_EC51/Data/Repositories/DefaultAuthRepository.swift`, thay bang `MY_EC51/Data/Repositories/AuthRepository.swift`.

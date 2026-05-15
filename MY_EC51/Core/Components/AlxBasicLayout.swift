@@ -38,8 +38,9 @@ struct AlxBaseLayout: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(8)
-            .beigeBackground()
+            .background(AlxColor.appBackground)
         }
+        .background(AlxColor.appBackground.ignoresSafeArea())
     }
 }
 

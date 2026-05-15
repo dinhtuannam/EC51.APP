@@ -35,11 +35,12 @@ struct DashboardMetricCardView: View {
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
-    return LazyVGrid(columns: columns) {
-        ForEach(0..<4) { _ in
-            DashboardMetricCardView().padding(2)
+    return AppBackground {
+        LazyVGrid(columns: columns) {
+            ForEach(0..<4) { _ in
+                DashboardMetricCardView().padding(2)
+            }
         }
+        .padding()
     }
-    .padding()
-    .beigeBackground()
 }

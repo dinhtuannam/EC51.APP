@@ -15,7 +15,7 @@ enum AlxColor {
         blue: 245 / 255
     )
     
-    static let beige = Color(
+    static let appBackground = Color(
         red: 236/255,
         green: 233/255,
         blue: 230/255

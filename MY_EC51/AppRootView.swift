@@ -11,11 +11,12 @@ struct AppRootView: View {
     let environment: AppEnvironment
 
     var body: some View {
-        if environment.appState.isAuthenticated {
-            environment.makeMainView()
-        } else {
-            environment.makeLoginView()
-                .beigeBackground()
+        AppBackground {
+            if environment.appState.isAuthenticated {
+                environment.makeMainView()
+            } else {
+                environment.makeLoginView()
+            }
         }
     }
 }
@@ -23,4 +24,3 @@ struct AppRootView: View {
 #Preview {
     AppRootView(environment: .preview())
 }
-

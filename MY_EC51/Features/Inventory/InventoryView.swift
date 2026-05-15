@@ -14,5 +14,7 @@ struct InventoryView: View {
 }
 
 #Preview {
-    InventoryView().beigeBackground()
+    AppBackground {
+        InventoryView()
+    }
 }

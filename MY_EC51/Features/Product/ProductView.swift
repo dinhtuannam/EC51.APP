@@ -14,5 +14,7 @@ struct ProductView: View {
 }
 
 #Preview {
-    ProductView().beigeBackground()
+    AppBackground {
+        ProductView()
+    }
 }

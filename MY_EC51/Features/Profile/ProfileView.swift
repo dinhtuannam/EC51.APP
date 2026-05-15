@@ -14,5 +14,7 @@ struct ProfileView: View {
 }
 
 #Preview {
-    ProfileView().beigeBackground()
+    AppBackground {
+        ProfileView()
+    }
 }

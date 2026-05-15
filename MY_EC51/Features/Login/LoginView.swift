@@ -69,8 +69,8 @@ struct LoginView: View {
 }
 
 #Preview {
-    AppEnvironment.preview()
-        .makeLoginView()
-        .beigeBackground()
+    AppBackground {
+        AppEnvironment.preview()
+            .makeLoginView()
+    }
 }
-
