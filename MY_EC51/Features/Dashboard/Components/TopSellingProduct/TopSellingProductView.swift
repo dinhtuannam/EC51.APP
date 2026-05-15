@@ -9,17 +9,13 @@ import SwiftUI
 
 struct TopSellingProductView: View {
     var body: some View {
-        AlxCard(swipeDirection: .left, backgroundColor: Color(AlxColor.gray)) {
+        AlxCard(swipeDirection: .left, backgroundColor: AlxColor.gray) {
             HStack(spacing: 8) {
-                AsyncImage(
-                    url: URL(string: "https://images.unsplash.com/photo-1591337676887-a217a6970a8a")
-                ) { image in
-                    image
-                        .resizable()
-                        .scaledToFill()
-                } placeholder: {
-                    ProgressView()
-                }
+                AlxAsyncImage(
+                    url: URL(string: "https://images.unsplash.com/photo-1591337676887-a217a6970a8a"),
+                    preview: true,
+                    cornerRadius: 8
+                )
                 .frame(width: 54, height: 54)
                 VStack(alignment: .leading, spacing: 3) {
                     AlxText("Microsoft 365 Business", style: .headline)

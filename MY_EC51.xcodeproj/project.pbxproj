@@ -50,6 +50,7 @@
 		A2000000000000000000000F /* BeVietnamPro-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1000000000000000000001B /* BeVietnamPro-Medium.ttf */; };
 		A20000000000000000000010 /* BeVietnamPro-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1000000000000000000001C /* BeVietnamPro-SemiBold.ttf */; };
 		A20000000000000000000011 /* BeVietnamPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1000000000000000000001D /* BeVietnamPro-Bold.ttf */; };
+		A20000000000000000000012 /* AlxAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000000000000000000001E /* AlxAsyncImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +98,7 @@
 		A1000000000000000000001B /* BeVietnamPro-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-Medium.ttf"; sourceTree = "<group>"; };
 		A1000000000000000000001C /* BeVietnamPro-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-SemiBold.ttf"; sourceTree = "<group>"; };
 		A1000000000000000000001D /* BeVietnamPro-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-Bold.ttf"; sourceTree = "<group>"; };
+		A1000000000000000000001E /* AlxAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlxAsyncImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 				2259963D2FB4532B00F30E41 /* AlxButton.swift */,
 				22D231342FB32FF700D8D9F0 /* AppBackground.swift */,
 				A10000000000000000000017 /* AlxText.swift */,
+				A1000000000000000000001E /* AlxAsyncImage.swift */,
 				22A9F7E52FB473CE00086B81 /* AlxTextField.swift */,
 				22A9F7E72FB47C8100086B81 /* AlxInputField.swift */,
 				22A9F80F2FB5AB1100086B81 /* AlxScreenHeader.swift */,
@@ -489,6 +492,7 @@
 				22D231352FB32FF700D8D9F0 /* AppBackground.swift in Sources */,
 				22A9F7FB2FB56E5F00086B81 /* DashboardViewModel.swift in Sources */,
 				A2000000000000000000000B /* AuthRepository.swift in Sources */,
+				A20000000000000000000012 /* AlxAsyncImage.swift in Sources */,
 				22A9F7F92FB56E5000086B81 /* DashboardView.swift in Sources */,
 				22A9F80E2FB575C700086B81 /* DashboardMetricCardView.swift in Sources */,
 				A20000000000000000000004 /* UserSessionStore.swift in Sources */,
@@ -649,6 +653,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save previewed images to Photos.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -677,6 +682,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save previewed images to Photos.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
