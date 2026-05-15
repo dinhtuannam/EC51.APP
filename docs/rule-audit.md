@@ -11,11 +11,11 @@ Da refactor luong Auth/Login va dieu huong root de dua code ve dung huong MVVM +
 | Rule | Sai trong code cu | Cach sua hien tai |
 |---|---|---|
 | View chi render state va gui action | `LoginView` tu quyet dinh chuyen sang `MainView` bang `viewModel.isLoggedIn`. | Them `AppRootView` de quyet dinh Login/Main theo `AppState.isAuthenticated`. `LoginView` chi hien thi form va goi `viewModel.handleSignIn()`. |
-| MVVM + UseCase + Repository + Coordinator | `LoginViewModel` goi thang `AuthService.login`, khong co UseCase/Repository/Coordinator. | Them `LoginUseCase`, `AuthRepository`, `DefaultAuthRepository`, `NavigationCoordinator`. Luong moi: `LoginView -> LoginViewModel -> LoginUseCase -> AuthRepository -> AuthAPIService -> APIClient`. |
+| MVVM + UseCase + Repository + Coordinator | `LoginViewModel` goi thang `AuthService.login`, khong co UseCase/Repository/Coordinator. | Them `LoginUseCase`, `AuthRepositoryProtocol`, `AuthRepository`, `NavigationCoordinator`. Luong moi: `LoginView -> LoginViewModel -> LoginUseCase -> AuthRepositoryProtocol -> AuthRepository -> APIClient/session store`. |
 | Data access phai di qua Repository Protocol | Data login duoc lay truc tiep tu service trong ViewModel. | `LoginViewModel` chi biet `LoginUseCaseProtocol`. Data layer duoc boc sau `AuthRepository`. |
 | Repository tra Domain Model, khong lo DTO/Data model ra ngoai Data layer | `LoginResponse`/`AuthUser` tu API duoc dung truc tiep trong ViewModel. | DTO nam o `Data/DTOs/AuthDTOs.swift`. Repository map sang Domain model `UserSession` truoc khi tra ve UseCase/ViewModel. |
-| ViewModel khong thao tac persistence truc tiep | `LoginViewModel.saveSession()` tu ghi `UserDefaults`. | Session duoc luu trong `DefaultAuthRepository` qua `UserSessionStoreProtocol`. ViewModel khong con biet `UserDefaults`. |
-| API/cache nam ngoai Presentation | Thu muc `Services/AuthService` chua API service va model dung chung voi Presentation. | Chuyen thanh `Data/Services/AuthAPIService.swift`, `Data/DTOs/AuthDTOs.swift`, `Data/Repositories/DefaultAuthRepository.swift`. |
+| ViewModel khong thao tac persistence truc tiep | `LoginViewModel.saveSession()` tu ghi `UserDefaults`. | Session duoc luu trong `AuthRepository` qua `UserSessionStoreProtocol`. ViewModel khong con biet `UserDefaults`. |
+| API/cache nam ngoai Presentation | Thu muc `Services/AuthService` chua API service va model dung chung voi Presentation. | Chuyen thanh `Data/DTOs/AuthDTOs.swift` va `Data/Repositories/AuthRepository.swift`. Repository truy van API/persistence truc tiep, khong con folder service. |
 | Coordinator quan ly dieu huong | Login state nam trong `LoginViewModel`; tab chinh khong co coordinator/root state. | Them `AppState` va `NavigationCoordinator`. Login thanh cong goi coordinator cap nhat `AppState`, root view tu render main. |
 | Moi tab nen co `NavigationStack` rieng | `MainView` chi dung `TabView`, khong co navigation path rieng cho tung tab. | `MainView` dung `NavigationStack` rieng cho Dashboard/Product/Inventory/Profile voi path nam trong `AppState`. |
 | SwiftUI uu tien hon UIKit | `MainView` cau hinh `UITabBar.appearance()` trong View. | Thay bang SwiftUI `.toolbarBackground(.white, for: .tabBar)` va `.tint(.blue)`. |
@@ -29,11 +29,10 @@ Da refactor luong Auth/Login va dieu huong root de dua code ve dung huong MVVM +
 - `MY_EC51/Core/Storage/UserSessionStore.swift`: persistence abstraction cho session.
 - `MY_EC51/Core/Routing/NavigationCoordinator.swift`: coordinator cho chuyen man hinh sau login.
 - `MY_EC51/Domain/Models/UserSession.swift`: Domain model thay cho response DTO.
-- `MY_EC51/Domain/Repositories/AuthRepository.swift`: repository protocol.
+- `MY_EC51/Domain/Repositories/AuthRepositoryProtocol.swift`: repository protocol.
 - `MY_EC51/Domain/UseCases/LoginUseCase.swift`: use case dang nhap.
 - `MY_EC51/Data/DTOs/AuthDTOs.swift`: request/response DTO cua API.
-- `MY_EC51/Data/Services/AuthAPIService.swift`: service goi endpoint login.
-- `MY_EC51/Data/Repositories/DefaultAuthRepository.swift`: map DTO sang Domain va luu session.
+- `MY_EC51/Data/Repositories/AuthRepository.swift`: goi endpoint login, map DTO sang Domain va luu session.
 - `MY_EC51/Features/Login/LoginView.swift`: chi render form login.
 - `MY_EC51/Features/Login/LoginViewModel.swift`: chi validate, quan ly state, goi use case.
 - `MY_EC51/Features/Main/MainView.swift`: tab SwiftUI + NavigationStack rieng.
@@ -45,7 +44,11 @@ Da refactor luong Auth/Login va dieu huong root de dua code ve dung huong MVVM +
 - Xoa `MY_EC51/Services/AuthService/AuthService.swift` va `MY_EC51/Services/AuthService/AuthModels.swift` vi da thay bang Data layer moi.
 - Xoa thu muc rong `MY_EC51/Services/AuthService` va `MY_EC51/Services`.
 - Xoa `MY_EC51/ContentView.swift` vi app entry point da dung truc tiep `AppRootView`.
+- Chuyen `beigeBackground()` tu `ContentView.swift` sang `MY_EC51/Core/Components/BackgroundBeige.swift` de giu modifier dung chung.
 - Xoa `MY_EC51/Features/Main/MainViewModel.swift` vi file trong, khong con vai tro sau khi main tab state/navigation chuyen sang `AppState`.
+- Xoa `MY_EC51/Data/Services/AuthAPIService.swift` va thu muc `MY_EC51/Data/Services` theo yeu cau gom logic truy van vao repository.
+- Xoa `MY_EC51/Data/Repositories/DefaultAuthRepository.swift`, thay bang `MY_EC51/Data/Repositories/AuthRepository.swift`.
+- Doi `MY_EC51/Domain/Repositories/AuthRepository.swift` thanh `MY_EC51/Domain/Repositories/AuthRepositoryProtocol.swift` de tach protocol va implementation ro rang.
 - Da go reference cac file bi xoa khoi `MY_EC51.xcodeproj/project.pbxproj`.
 
 ## Ghi chu ve Realm

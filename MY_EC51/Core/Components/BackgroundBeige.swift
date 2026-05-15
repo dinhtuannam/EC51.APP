@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  BackgroundBeige.swift
 //  MY_EC51
 //
 //  Created by MacOS on 12/05/2026.
@@ -19,16 +19,7 @@ struct BackgroundBeige: ViewModifier {
 
 extension View {
     func beigeBackground() -> some View {
-        self.modifier(BackgroundBeige())
+        modifier(BackgroundBeige())
     }
 }
 
-struct ContentView: View {
-    var body: some View {
-        AppRootView(environment: .preview())
-    }
-}
-
-#Preview {
-    ContentView()
-}

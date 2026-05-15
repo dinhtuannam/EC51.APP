@@ -27,9 +27,8 @@ final class AppEnvironment {
         let apiClient = APIClient.shared
         let sessionStore = UserDefaultsUserSessionStore()
         let appState = AppState(sessionStore: sessionStore)
-        let authAPIService = AuthAPIService(apiClient: apiClient)
-        let authRepository = DefaultAuthRepository(
-            apiService: authAPIService,
+        let authRepository = AuthRepository(
+            apiClient: apiClient,
             sessionStore: sessionStore
         )
         let loginUseCase = LoginUseCase(authRepository: authRepository)
@@ -72,4 +71,3 @@ final class AppEnvironment {
         MainView(appState: appState)
     }
 }
-

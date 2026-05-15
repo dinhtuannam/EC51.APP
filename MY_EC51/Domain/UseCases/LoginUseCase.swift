@@ -12,9 +12,9 @@ protocol LoginUseCaseProtocol {
 }
 
 struct LoginUseCase: LoginUseCaseProtocol {
-    private let authRepository: any AuthRepository
+    private let authRepository: any AuthRepositoryProtocol
 
-    init(authRepository: any AuthRepository) {
+    init(authRepository: any AuthRepositoryProtocol) {
         self.authRepository = authRepository
     }
 
@@ -37,4 +37,3 @@ struct PreviewLoginUseCase: LoginUseCaseProtocol {
         )
     }
 }
-
