@@ -22,7 +22,7 @@ struct TopSellingProductView: View {
                 }
                 .frame(width: 54, height: 54)
                 VStack(alignment: .leading, spacing: 3) {
-                    AlxText("Microsoft 365 Business", style: .title2)
+                    AlxText("Microsoft 365 Business", style: .headline)
                     HStack(spacing: 3) {
                         AlxText("Quantity:", style: .body, color: .secondary)
                             .blur(radius: 0.3)
@@ -35,7 +35,7 @@ struct TopSellingProductView: View {
                     .foregroundStyle(.tertiary)
             }
         } swipeContent: {
-            AlxIcon(type: .info)
+            AlxIcon(type: .info, height: .infinity)
         }.background(Color.white)
             .overlay(
                 RoundedRectangle(cornerRadius: 16)

@@ -16,24 +16,24 @@ struct DashboardView: View {
     ]
     
     var body: some View {
-        AlxBaseLayout(title: "Dashboard", icon: "house.fill", subtitle: subtitle) {
+        AlxBaseLayout(title: "Dashboard", icon: "house.fill") {
             LazyVGrid(columns: columns) {
-                ForEach(0..<4) { _ in
-                    DashboardMetricCardView()
-                        .padding(2)
-                }
+              ForEach(0..<4) { _ in
+                  DashboardMetricCardView()
+                      .padding(2)
+              }
             }
             AlxCard(title: "Top selling product") {
-                ScrollView {
-                    VStack(alignment: .leading, spacing: 8) {
-                        TopSellingProductView()
-                        TopSellingProductView()
-                        TopSellingProductView()
-                        TopSellingProductView()
-                        TopSellingProductView()
-                        TopSellingProductView()
-                    }
-                }
+              ScrollView {
+                  VStack(alignment: .leading, spacing: 8) {
+                      TopSellingProductView()
+                      TopSellingProductView()
+                      TopSellingProductView()
+                      TopSellingProductView()
+                      TopSellingProductView()
+                      TopSellingProductView()
+                  }
+              }
             }
             Spacer()
         }
