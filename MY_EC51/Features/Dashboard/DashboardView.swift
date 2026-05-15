@@ -13,26 +13,31 @@ struct DashboardView: View {
         GridItem(.flexible())
     ]
     
-    var formattedDate: String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE, MMM d"
-        return formatter.string(from: Date())
-    }
-    
     var body: some View {
         AlxBaseLayout(title: "Dashboard", icon: "house.fill") {
-            LazyVGrid(columns: columns, spacing: 16) {
+            LazyVGrid(columns: columns) {
                 ForEach(0..<4) { _ in
                     DashboardMetricCardView()
                         .padding(2)
                 }
             }
-            
+            AlxCard(title: "Top selling product") {
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 8) {
+                        TopSellingProductView()
+                        TopSellingProductView()
+                        TopSellingProductView()
+                        TopSellingProductView()
+                        TopSellingProductView()
+                        TopSellingProductView()
+                    }
+                }
+            }
             Spacer()
         }
     }
 }
 
 #Preview {
-    DashboardView().beigeBackground()
+    DashboardView()
 }

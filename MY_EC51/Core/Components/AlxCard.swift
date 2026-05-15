@@ -24,7 +24,7 @@ struct AlxCard<Content: View, SwipeContent: View>: View {
     var backgroundColor: Color
 
     let content: Content
-    let swipeContent: SwipeContent
+    let swipeContent: SwipeContent?
 
     // MARK: State
     @State private var offsetX: CGFloat = 0
@@ -32,7 +32,7 @@ struct AlxCard<Content: View, SwipeContent: View>: View {
 
     private let revealWidth: CGFloat = 80
 
-    // MARK: Init
+    // MARK: Init — có swipeContent
     init(
         title: String? = nil,
         cornerRadius: CGFloat = 16,
@@ -57,12 +57,19 @@ struct AlxCard<Content: View, SwipeContent: View>: View {
     var body: some View {
         cardLayer
             .offset(x: offsetX)
-            // Animation chỉ chạy khi snap (onEnded) — không can thiệp vào drag trực tiếp
             .animation(.spring(response: 0.38, dampingFraction: 0.78), value: offsetX)
-            .gesture(dragGesture)
+            .gesture(swipeContent != nil ? dragGesture : nil)
             .background(alignment: swipeDirection == .left ? .trailing : .leading) {
-                swipeBackgroundLayer
-                    .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
+                if let sc = swipeContent {
+                    sc
+                        .frame(width: revealWidth)
+                        .opacity(revealOpacity)
+                        .scaleEffect(
+                            CGSize(width: revealScale, height: revealScale),
+                            anchor: swipeDirection == .left ? .trailing : .leading
+                        )
+                        .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
+                }
             }
             .shadow(color: shadowColor, radius: 10, x: 0, y: 4)
     }
@@ -70,15 +77,11 @@ struct AlxCard<Content: View, SwipeContent: View>: View {
     // MARK: - Card Layer
     private var cardLayer: some View {
         VStack(alignment: .leading, spacing: 0) {
-
-            // Optional title header
             if let title = title {
                 titleHeader(title)
             }
-
-            // Main content
             content
-                .padding(.horizontal, 16)
+                .padding(.horizontal, 12)
                 .padding(.vertical, title == nil ? 16 : 12)
                 .padding(.bottom, 4)
         }
@@ -97,31 +100,21 @@ struct AlxCard<Content: View, SwipeContent: View>: View {
                     startPoint: .top,
                     endPoint: .bottom
                 ))
-                .frame(width: 3, height: 16)
+                .frame(width: 3, height: 20)
 
             Text(title)
-                .font(.system(size: 14, weight: .semibold, design: .rounded))
+                .font(.system(size: 20, weight: .semibold, design: .rounded))
+                .kerning(2)
                 .foregroundStyle(.primary)
 
             Spacer()
         }
-        .padding(.horizontal, 16)
+        .padding(.horizontal, 12)
         .padding(.top, 14)
         .padding(.bottom, 10)
 
         Divider()
             .padding(.horizontal, 12)
-    }
-
-    // MARK: - Swipe Background Layer
-    private var swipeBackgroundLayer: some View {
-        swipeContent
-            .frame(width: revealWidth)
-            .opacity(revealOpacity)
-            .scaleEffect(
-                CGSize(width: revealScale, height: revealScale),
-                anchor: swipeDirection == .left ? .trailing : .leading
-            )
     }
 
     // MARK: - Drag Gesture
@@ -159,7 +152,6 @@ struct AlxCard<Content: View, SwipeContent: View>: View {
                     ? (translation > swipeThreshold / 2 || velocity > 200)
                     : (translation < -swipeThreshold / 2 || velocity < -200)
 
-                // Gán trực tiếp — .animation(value:) trên cardLayer tự animate snap
                 if isRevealed && shouldHide {
                     offsetX = 0
                     isRevealed = false
@@ -186,10 +178,37 @@ struct AlxCard<Content: View, SwipeContent: View>: View {
     }
 }
 
+// MARK: - Init không có swipeContent (EmptyView)
+extension AlxCard where SwipeContent == EmptyView {
+    init(
+        title: String? = nil,
+        cornerRadius: CGFloat = 16,
+        backgroundColor: Color = Color(.systemBackground),
+        shadowColor: Color = Color.black.opacity(0.08),
+        @ViewBuilder content: () -> Content
+    ) {
+        self.title = title
+        self.cornerRadius = cornerRadius
+        self.swipeDirection = .left
+        self.swipeThreshold = 60
+        self.backgroundColor = backgroundColor
+        self.shadowColor = shadowColor
+        self.content = content()
+        self.swipeContent = nil
+    }
+}
+
 // MARK: - Preview
 #Preview {
     ScrollView {
         VStack(spacing: 20) {
+
+            // ✅ Card KHÔNG có swipeContent
+            AlxCard(title: "Top selling product") {
+                Text("Hello")
+                    .font(.system(size: 15))
+                    .foregroundStyle(.secondary)
+            }
 
             // Card with title + swipe left (delete)
             AlxCard(title: "Đơn hàng #1042") {
@@ -212,9 +231,7 @@ struct AlxCard<Content: View, SwipeContent: View>: View {
                         .foregroundStyle(.tertiary)
                 }
             } swipeContent: {
-                Button {
-                    print("Delete tapped")
-                } label: {
+                Button { print("Delete") } label: {
                     VStack(spacing: 4) {
                         Image(systemName: "trash.fill")
                             .font(.system(size: 18, weight: .semibold))
@@ -231,10 +248,7 @@ struct AlxCard<Content: View, SwipeContent: View>: View {
             }
 
             // Card without title + swipe right (pin)
-            AlxCard(
-                swipeDirection: .right,
-                backgroundColor: Color(.secondarySystemBackground)
-            ) {
+            AlxCard(swipeDirection: .right, backgroundColor: Color(.secondarySystemBackground)) {
                 HStack(spacing: 12) {
                     Circle()
                         .fill(LinearGradient(colors: [.cyan, .blue], startPoint: .topLeading, endPoint: .bottomTrailing))
@@ -244,7 +258,6 @@ struct AlxCard<Content: View, SwipeContent: View>: View {
                                 .font(.system(size: 15, weight: .bold))
                                 .foregroundStyle(.white)
                         )
-
                     VStack(alignment: .leading, spacing: 3) {
                         Text("Anh Nguyễn")
                             .font(.system(size: 15, weight: .medium))
@@ -259,9 +272,7 @@ struct AlxCard<Content: View, SwipeContent: View>: View {
                         .foregroundStyle(.tertiary)
                 }
             } swipeContent: {
-                Button {
-                    print("Pin tapped")
-                } label: {
+                Button { print("Pin") } label: {
                     VStack(spacing: 4) {
                         Image(systemName: "pin.fill")
                             .font(.system(size: 18, weight: .semibold))
@@ -272,42 +283,6 @@ struct AlxCard<Content: View, SwipeContent: View>: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(
                         LinearGradient(colors: [.indigo, .purple],
-                                       startPoint: .top, endPoint: .bottom)
-                    )
-                }
-            }
-
-            // Card with title + swipe left (archive)
-            AlxCard(title: "Thông báo") {
-                HStack(spacing: 10) {
-                    Image(systemName: "bell.badge.fill")
-                        .font(.system(size: 22))
-                        .foregroundStyle(.orange)
-                        .frame(width: 36)
-
-                    VStack(alignment: .leading, spacing: 3) {
-                        Text("Khuyến mãi hôm nay")
-                            .font(.system(size: 15, weight: .medium))
-                        Text("Giảm 30% cho tất cả sản phẩm từ 8h–12h.")
-                            .font(.system(size: 13))
-                            .foregroundStyle(.secondary)
-                            .lineLimit(2)
-                    }
-                }
-            } swipeContent: {
-                Button {
-                    print("Archive tapped")
-                } label: {
-                    VStack(spacing: 4) {
-                        Image(systemName: "archivebox.fill")
-                            .font(.system(size: 18, weight: .semibold))
-                        Text("Lưu")
-                            .font(.system(size: 11, weight: .semibold))
-                    }
-                    .foregroundStyle(.white)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(
-                        LinearGradient(colors: [Color.teal, Color.green.opacity(0.85)],
                                        startPoint: .top, endPoint: .bottom)
                     )
                 }

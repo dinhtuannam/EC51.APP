@@ -8,6 +8,19 @@
 import SwiftUI
 
 enum AlxColor {
+    
+    static let gray = Color(
+        red: 245 / 255,
+        green: 245 / 255,
+        blue: 245 / 255
+    )
+    
+    static let beige = Color(
+        red: 236/255,
+        green: 233/255,
+        blue: 230/255
+    )
+    
     static let primary = Color(
         red: 13.0 / 255.0,
         green: 110.0 / 255.0,

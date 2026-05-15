@@ -10,7 +10,7 @@ import SwiftUI
 struct BackgroundBeige: ViewModifier {
     func body(content: Content) -> some View {
         ZStack {
-            Color(red: 236/255, green: 233/255, blue: 230/255)
+            Color(AlxColor.beige)
                 .ignoresSafeArea()
             content
         }
