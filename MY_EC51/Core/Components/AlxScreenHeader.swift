@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct AlxScreenHeader<Content: View>: View {
+struct AlxScreenHeader<Accessory: View>: View {
     let title: String
     let icon: String?
     let subtitle: String?
-    let content: Content?
+    let accessory: Accessory
     
     var formattedDate: String {
         let formatter = DateFormatter()
@@ -27,12 +27,12 @@ struct AlxScreenHeader<Content: View>: View {
         title: String,
         icon: String? = nil,
         subtitle: String? = nil,
-        @ViewBuilder content: () -> Content? = { nil }
+        @ViewBuilder accessory: () -> Accessory
     ) {
         self.title = title
         self.icon = icon
         self.subtitle = subtitle
-        self.content = content()
+        self.accessory = accessory()
     }
     
     var body: some View {
@@ -57,11 +57,21 @@ struct AlxScreenHeader<Content: View>: View {
             
             Spacer()
             
-            if let content = content {
-                content
-            }
+            accessory
         }
         .padding(.horizontal)
+    }
+}
+
+extension AlxScreenHeader where Accessory == EmptyView {
+    init(
+        title: String,
+        icon: String? = nil,
+        subtitle: String? = nil
+    ) {
+        self.init(title: title, icon: icon, subtitle: subtitle) {
+            EmptyView()
+        }
     }
 }
 
@@ -79,4 +89,3 @@ struct AlxScreenHeader<Content: View>: View {
             }
     }
 }
-

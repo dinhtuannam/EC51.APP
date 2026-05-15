@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct AlxBaseLayout<Content: View>: View {
+struct AlxBaseLayout: View {
     let title: String
     let icon: String?
     let subtitle: String?
-    let content: Content
+    let content: AnyView
 
-    init(
+    init<Content: View>(
         title: String,
         icon: String? = nil,
         subtitle: String? = nil,
@@ -22,7 +22,7 @@ struct AlxBaseLayout<Content: View>: View {
         self.title = title
         self.icon = icon
         self.subtitle = subtitle
-        self.content = content()
+        self.content = AnyView(content())
     }
 
     var body: some View {
@@ -31,9 +31,7 @@ struct AlxBaseLayout<Content: View>: View {
                 title: title,
                 icon: icon,
                 subtitle: subtitle
-            ) {
-                
-            }
+            )
             
             VStack {
                 content
@@ -60,4 +58,3 @@ struct AlxBaseLayout<Content: View>: View {
         .background(Color.red)
     }
 }
-
