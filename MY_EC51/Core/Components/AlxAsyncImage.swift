@@ -166,67 +166,139 @@ private struct AlxImagePreview: View {
     @State private var offset: CGSize = .zero
     @State private var lastOffset: CGSize = .zero
     @State private var saveMessage: String?
+    @State private var isChromeVisible = true
 
     var body: some View {
         ZStack {
-            Color.black
+            LinearGradient(
+                colors: [
+                    Color.black,
+                    Color(red: 0.05, green: 0.07, blue: 0.12),
+                    Color.black
+                ],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
                 .ignoresSafeArea()
+
+            RadialGradient(
+                colors: [
+                    AlxColor.primary.opacity(0.28),
+                    .clear
+                ],
+                center: .topTrailing,
+                startRadius: 40,
+                endRadius: 360
+            )
+            .ignoresSafeArea()
+            .allowsHitTesting(false)
 
             Image(uiImage: image)
                 .resizable()
                 .scaledToFit()
                 .scaleEffect(scale)
                 .offset(offset)
+                .shadow(color: .black.opacity(0.45), radius: 24, x: 0, y: 18)
+                .padding(.horizontal, 10)
                 .gesture(zoomGesture.simultaneously(with: dragGesture))
                 .onTapGesture(count: 2) {
                     resetZoom()
                 }
-
-            VStack {
-                HStack(spacing: 12) {
-                    Button {
-                        saveImage()
-                    } label: {
-                        Image(systemName: "square.and.arrow.down")
-                            .font(.system(size: 18, weight: .semibold))
-                            .frame(width: 42, height: 42)
+                .onTapGesture {
+                    withAnimation(.easeInOut(duration: 0.18)) {
+                        isChromeVisible.toggle()
                     }
-                    .buttonStyle(.plain)
-                    .foregroundStyle(.white)
-                    .background(Color.white.opacity(0.16))
-                    .clipShape(Circle())
-
-                    Spacer()
-
-                    Button {
-                        dismiss()
-                    } label: {
-                        Image(systemName: "xmark")
-                            .font(.system(size: 18, weight: .semibold))
-                            .frame(width: 42, height: 42)
-                    }
-                    .buttonStyle(.plain)
-                    .foregroundStyle(.white)
-                    .background(Color.white.opacity(0.16))
-                    .clipShape(Circle())
                 }
-                .padding(.horizontal, 20)
-                .padding(.top, 18)
+
+            if isChromeVisible {
+                previewChrome
+                    .transition(.opacity.combined(with: .move(edge: .top)))
+                    .zIndex(10)
+            }
+        }
+        .statusBarHidden()
+    }
+
+    private var previewChrome: some View {
+        VStack(spacing: 0) {
+            HStack(spacing: 12) {
+                VStack(alignment: .leading, spacing: 2) {
+                    AlxText("Preview", style: .headline, color: .white)
+                    AlxText(scaleText, style: .caption, color: .white.opacity(0.68))
+                }
 
                 Spacer()
 
-                if let saveMessage {
-                    AlxText(saveMessage, style: .footnote, color: .white)
-                        .padding(.horizontal, 14)
-                        .padding(.vertical, 8)
-                        .background(Color.white.opacity(0.16))
-                        .clipShape(Capsule())
-                        .padding(.bottom, 28)
+                previewButton(systemImage: "square.and.arrow.down") {
+                    saveImage()
+                }
+
+                previewButton(systemImage: "xmark") {
+                    dismiss()
                 }
             }
-            .zIndex(10)
+            .padding(.horizontal, 18)
+            .padding(.vertical, 14)
+            .background(
+                LinearGradient(
+                    colors: [
+                        Color.black.opacity(0.62),
+                        Color.black.opacity(0.2)
+                    ],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+                .ignoresSafeArea(edges: .top)
+            )
+
+            Spacer()
+
+            if let saveMessage {
+                AlxText(saveMessage, style: .footnote, color: .white)
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 10)
+                    .background(
+                        Capsule()
+                            .fill(Color.white.opacity(0.16))
+                            .overlay(
+                                Capsule()
+                                    .stroke(Color.white.opacity(0.24), lineWidth: 1)
+                            )
+                    )
+                    .shadow(color: .black.opacity(0.3), radius: 16, x: 0, y: 8)
+                    .transition(.scale(scale: 0.92).combined(with: .opacity))
+                    .padding(.bottom, 28)
+            } else {
+                AlxText("Pinch to zoom - double tap to reset", style: .caption, color: .white.opacity(0.62))
+                    .padding(.horizontal, 14)
+                    .padding(.vertical, 8)
+                    .background(Capsule().fill(Color.black.opacity(0.28)))
+                    .padding(.bottom, 28)
+            }
         }
-        .statusBarHidden()
+    }
+
+    private var scaleText: String {
+        scale > 1.01 ? "\(Int(scale * 100))% zoom" : "Tap image to hide controls"
+    }
+
+    private func previewButton(systemImage: String, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            Image(systemName: systemImage)
+                .font(.system(size: 17, weight: .semibold))
+                .frame(width: 42, height: 42)
+        }
+        .buttonStyle(.plain)
+        .foregroundStyle(.white)
+        .background(
+            Circle()
+                .fill(Color.white.opacity(0.15))
+                .overlay(
+                    Circle()
+                        .stroke(Color.white.opacity(0.22), lineWidth: 1)
+                )
+        )
+        .shadow(color: .black.opacity(0.28), radius: 12, x: 0, y: 6)
     }
 
     private var zoomGesture: some Gesture {
@@ -271,10 +343,15 @@ private struct AlxImagePreview: View {
 
     private func saveImage() {
         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-        saveMessage = "Saved to Photos"
+        withAnimation(.spring(response: 0.28, dampingFraction: 0.82)) {
+            saveMessage = "Saved to Photos"
+            isChromeVisible = true
+        }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            saveMessage = nil
+            withAnimation(.easeOut(duration: 0.2)) {
+                saveMessage = nil
+            }
         }
     }
 }
@@ -289,4 +366,3 @@ private struct AlxImagePreview: View {
     .padding()
     .background(AlxColor.appBackground)
 }
-
