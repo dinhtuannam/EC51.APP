@@ -26,6 +26,7 @@ struct LoginUseCase: LoginUseCaseProtocol {
 struct PreviewLoginUseCase: LoginUseCaseProtocol {
     func execute(username: String, password: String) async throws -> UserSession {
         UserSession(
+            token: "preview-token",
             user: UserSession.User(
                 id: 1,
                 fullName: username.isEmpty ? "Preview User" : username,

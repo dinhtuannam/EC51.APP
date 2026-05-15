@@ -40,6 +40,14 @@ Da refactor luong Auth/Login va dieu huong root de dua code ve dung huong MVVM +
 - `MY_EC51/Core/Components/AlxScreenHeader.swift`: bo doc `UserDefaults`.
 - `MY_EC51/Core/Components/AlxBasicLayout.swift`: truyen subtitle vao header.
 
+## File/folder da don dep sau refactor
+
+- Xoa `MY_EC51/Services/AuthService/AuthService.swift` va `MY_EC51/Services/AuthService/AuthModels.swift` vi da thay bang Data layer moi.
+- Xoa thu muc rong `MY_EC51/Services/AuthService` va `MY_EC51/Services`.
+- Xoa `MY_EC51/ContentView.swift` vi app entry point da dung truc tiep `AppRootView`.
+- Xoa `MY_EC51/Features/Main/MainViewModel.swift` vi file trong, khong con vai tro sau khi main tab state/navigation chuyen sang `AppState`.
+- Da go reference cac file bi xoa khoi `MY_EC51.xcodeproj/project.pbxproj`.
+
 ## Ghi chu ve Realm
 
 Source hien tai khong co import/thao tac Realm truc tiep, nen khong co vi pham kieu "ViewModel/Domain phu thuoc Realm". Chuc nang hien tai moi luu auth session, va theo design auth token/current user co the luu bang `UserDefaults`. Khi them offline cache/CRUD local, Realm nen duoc dat sau Repository/Data persistence, khong dua Realm object ra ngoai Data layer.
@@ -49,4 +57,3 @@ Source hien tai khong co import/thao tac Realm truc tiep, nen khong co vi pham k
 - Khong con tham chieu `AuthService`, `AuthModels`, `isLoggedIn`, `UITabBar`, `UserDefaults.standard` trong UI/header.
 - Khong co `RealmSwift` trong ViewModel/Domain.
 - Da cap nhat `MY_EC51.xcodeproj/project.pbxproj` de bo file service cu va them cac file App/Core/Domain/Data moi vao target.
-
